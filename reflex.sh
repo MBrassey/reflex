@@ -53,7 +53,7 @@ anyyn=""
 phones=""
 phonesyn=""
 notified=""
-delay="30s"
+delay="3s"
 
 #Colors
 reset="$(tput sgr0)"
@@ -160,7 +160,8 @@ function key {
 
 function monitor {
         echo "${cyan}|${reset}${green}    [OK] Started monitor.${reset}"
-        echo "${cyan}|${reset}${green}    To keep this process running use${reset}${cyan} CTRL+Z${reset}${green}. Then run these two commands:${reset}"
+        echo "${cyan}|${reset}${green}    Keep running in background:${reset}"
+        echo "${cyan}|${reset}${cyan}    CTRL+Z${reset}${green}${reset}"
         echo "${cyan}|    disown -h ${reset}"
         echo "${cyan}|    bg 1 ${reset}"
         echo "${cyan}|${reset}"
@@ -203,12 +204,12 @@ function message {
      echo "$header"
      echo "${cyan}|${reset}"
      echo "${cyan}|${reset}${purple}    Notifying:${reset}" 
-     echo "${cyan}| ${reset}$number_1"
-     echo "${cyan}| ${reset}$number_2"
+     echo "${cyan}| ${reset}   ╼[$number_1]"
+     echo "${cyan}| ${reset}   ╼[$number_2]"
      echo "${cyan}|${reset}${purple}    Monitoring for changes in:${reset}"
-     echo "${cyan}| ${reset}$string"
+     echo "${cyan}| ${reset}   ╼[$string]"
      echo "${cyan}|${reset}${purple}    URL:${reset}"
-     echo "${cyan}| ${reset}$url"
+     echo "${cyan}| ${reset}   ╼[$url]"
 }
 
 #Code
