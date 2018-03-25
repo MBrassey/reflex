@@ -66,38 +66,43 @@ purple="$(tput bold; tput setaf 5)"
 red="$(tput bold; tput setaf 1)"
 white="$(tput bold; tput setaf 7)"
 yellow="$(tput bold; tput setaf 3)"
-header="${cyan}================================================================[reflex]====${reset}"
-footer="${cyan}============================================================================${reset}"
+header="${cyan}╭─────────────────────────╼[reflex]${reset}"
+footer="${cyan}╰──────────────────╼[reflex]${reset}"
 
 #Functions
 function url {
      clear
      echo "$header"
-     printf "Enter the ${cyan}URL${reset} you would like to monitor (q to quit) : "
+     echo "${cyan}|${reset}"
+     printf "${cyan}|${reset}    Enter the ${cyan}URL${reset} you would like to monitor (q to quit) : "
                 read -r url
                 if [ "$url" = "q" ]; then
-                echo "${cyan}Bye-Bye${reset}"
+                echo "${cyan}|    Bye-Bye${reset}"
                 exit
                 fi
+    echo "${cyan}|${reset}"
     echo "$footer"
 }
 
 function string {
      clear
      echo "$header"
-     printf "Enter the ${cyan}string${reset} you would like to monitor for changes to (q to quit) : "
+     echo "${cyan}|${reset}"
+     printf "${cyan}|${reset}    Enter the ${cyan}string${reset} you would like to monitor for changes to (q to quit) : "
                 read -r string
                 if [ "$string" = "q" ]; then
-                echo "${cyan}Bye-Bye${reset}"
+                echo "${cyan}|    Bye-Bye${reset}"
                 exit
                 fi
+    echo "${cyan}|${reset}"
     echo "$footer"
 }
 
 function phones {
      clear
      echo "$header"
-     printf "Is there a second phone you would like reflex to notify? (y or n) : "
+     echo "${cyan}|${reset}"
+     printf "${cyan}|${reset}    Is there a second phone you would like reflex to notify? (y or n) : "
                 read -r phones
      case "$phones" in
           [yY][eE][sS]|[yY])
@@ -106,49 +111,59 @@ function phones {
           *)
               phonesyn="0"
               ;;
-     esac
+     esac 
+     echo "${cyan}|${reset}"
      echo "$footer"
 }
 
 function number1 {
     clear
     echo "$header"
-    printf "Enter the ${cyan}phone number${reset} to notify via sms (q to quit) : "
+    echo "${cyan}|${reset}"
+    printf "${cyan}|${reset}    Enter the ${cyan}phone number${reset} to notify via sms (q to quit) : "
                 read -r number_1
                 if [ "$number1" = "q" ]; then
-                echo "${cyan}Bye-Bye${reset}"
+                echo "${cyan}|    Bye-Bye${reset}"
                 exit
                 fi
+    echo "${cyan}|${reset}"
+    echo "$footer"
 }
 
 function number2 {
     clear
     echo "$header"
-    printf "Enter the ${cyan}second phone number${reset} to notify via sms (q to quit) : "
+    echo "${cyan}|${reset}"
+    printf "${cyan}|${reset}    Enter the ${cyan}second phone number${reset} to notify via sms (q to quit) : "
                 read -r number_2
                 if [ "$number2" = "q" ]; then
-                echo "${cyan}Bye-Bye${reset}"
+                echo "${cyan}|    Bye-Bye${reset}"
                 exit
                 fi
+    echo "${cyan}|${reset}"
+    echo "$footer"
 }
 
 function key {
     clear
     echo "$header"
-    printf "Enter your ${cyan}textbelt.com api key${reset} (q to quit) : "
+    echo "${cyan}|${reset}"
+    printf "${cyan}|${reset}     Enter your ${cyan}textbelt.com api key${reset} (q to quit) : "
                 read -r key
                 if [ "$key" = "q" ]; then
-                echo "${cyan}Bye-Bye${reset}"
+                echo "${cyan}|    Bye-Bye${reset}"
                 exit
                 fi
+    echo "${cyan}|${reset}"
+    echo "$footer"
 }
 
 function monitor {
-        echo "${green}[OK] Started monitor.${reset}"
-        echo ""
-        echo "${green}To keep this process running use${reset}${cyan} CTRL+Z${reset}${green}. Then run these two commands:${reset}"
-        echo "${cyan}disown -h ${reset}"
-        echo "${cyan}bg 1 ${reset}"
+        echo "${cyan}|${reset}${green}    [OK] Started monitor.${reset}"
+        echo "${cyan}|${reset}${green}    To keep this process running use${reset}${cyan} CTRL+Z${reset}${green}. Then run these two commands:${reset}"
+        echo "${cyan}|    disown -h ${reset}"
+        echo "${cyan}|    bg 1 ${reset}"
+        echo "${cyan}|${reset}"
         echo "$footer"
             while :
             do
@@ -186,14 +201,14 @@ curl -X POST https://textbelt.com/text \
 function message {
      clear
      echo "$header"
-     echo "${purple}Notifying:${reset}" 
-     echo "${cyan}> ${reset}$number_1"
-     echo "${cyan}> ${reset}$number_2"
-     echo "${purple}Monitoring for changes in:${reset}"
-     echo "${cyan}> ${reset}$string"
-     echo "${purple}URL:${reset}"
-     echo "${cyan}> ${reset}$url"
-     echo "$footer"
+     echo "${cyan}|${reset}"
+     echo "${cyan}|${reset}${purple}    Notifying:${reset}" 
+     echo "${cyan}| ${reset}$number_1"
+     echo "${cyan}| ${reset}$number_2"
+     echo "${cyan}|${reset}${purple}    Monitoring for changes in:${reset}"
+     echo "${cyan}| ${reset}$string"
+     echo "${cyan}|${reset}${purple}    URL:${reset}"
+     echo "${cyan}| ${reset}$url"
 }
 
 #Code
@@ -215,4 +230,6 @@ phones
 key
 message
 monitor
+     echo "${cyan}|${reset}"
+     echo "$footer"
 exit
