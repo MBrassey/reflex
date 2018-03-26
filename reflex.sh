@@ -173,6 +173,7 @@ function monitor {
                  reading="$(curl -vs "$url" 2>&1 | grep "$string")"  
                  if [ "$reading" = "" ]; then
 #                     sendsms1
+                      sent=$(date +"%T")
                       echo "${green}✔ ${reset} ${cyan}[${reset}${blue}$number_1${reset}${cyan}]${reset}"
                          if [ "$phonesyn" = "1" ]; then
 #                             sendsms2
@@ -181,7 +182,7 @@ function monitor {
                      notified="1"
                  fi
                  if [ "$notified" = "1" ]; then
-                     echo "${green}✔ ${reset} ${cyan}[${reset}${green} Complete ${reset}${cyan}]╼[${reset}${purple}Change detected, notification sent.${reset}${cyan}]${reset}"
+                     echo "${green}✔ ${reset} ${cyan}[${reset}${green} Complete ${reset}${cyan}]╼[${reset}${purple}Change detected @ ${reset}${green}$sent${reset}${purple}.${reset}${cyan}]${reset}"
                      echo ""
                      exit
                  fi
