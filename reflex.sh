@@ -180,7 +180,7 @@ function monitor {
                      notified="1"
                  fi
                  if [ "$notified" = "1" ]; then
-                     echo "${green}✔ ${reset} ${cyan}[${reset}${green} Complete ${reset}${cyan}] [${reset}${purple}Change in: ${reset}${green}$string${reset}${purple}, notification sent.${reset}${cyan}]${reset}"
+                     echo "${green}✔ ${reset} ${cyan}[${reset}${green} Complete ${reset}${cyan}] [${reset}${purple}Change detected, notification sent.${reset}${cyan}]${reset}"
                      exit
                  fi
                  sleep $delay
