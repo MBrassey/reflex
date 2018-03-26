@@ -56,7 +56,7 @@ about="
  If the phrase you specify is not present, or has changed, you will be notified.
  You will be given the option to notify 2 phone numbers via SMS. You need a textbelt.com 
  ID im order to send the texts. Reflex will stop once the notification(s) have 
- been sent. You will have the option to run reflex in the background and logoff.${reset} 
+ been sent. You can run reflex in the background and logoff if needed.${reset} 
 "
 
 help="
