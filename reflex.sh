@@ -51,11 +51,11 @@ Copyright (C) 2017  Matthew A. Brassey
         along with this program.  If not, see <http://www.gnu.org/licenses/>.${reset}
 "
 about="
- ${cyan}Reflex${reset}${purple} is a menu driven tool for monitoring changes on a web page. 
- It uses wget and grep to confirm a phrase is present on the page you supply.
+ ${cyan}reflex${reset}${purple} is a menu driven tool for monitoring changes on a web page. 
+ It uses curl and grep to confirm a phrase is present on the page you supply.
  If the phrase you specify is not present, or has changed, you will be notified.
- You will be given the option to notify 2 phone numbers via SMS.  
- Reflex will stop once the notification(s) have been sent. 
+ You will be given the option to notify 2 phone numbers via SMS. You will need a textbelt.com 
+ ID im order to send the texts. Reflex will stop once the notification(s) have been sent. 
  You will have the option to run reflex in the background and logoff.${reset} 
 "
 
