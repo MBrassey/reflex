@@ -3,6 +3,13 @@ Monitor a URL for a change, notify up to two phone numbers via SMS.
 
 ![reflex](./reflex.png)
 
+> Reflex is a menu driven tool for monitoring changes on a web page.
+> It uses curl and grep to confirm a phrase is present on the page you supply.
+> If the phrase you specify is not present, or has changed, you will be notified.
+> You will be given the option to notify 2 phone numbers via SMS.
+> Reflex will stop once the notification(s) have been sent.
+> You will have the option to run reflex in the background and logoff.
+
     Usage: ./reflex.sh [--help|--version|--license|--about]
 
     [options]
