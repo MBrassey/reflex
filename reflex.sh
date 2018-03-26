@@ -167,6 +167,7 @@ function key {
 function monitor {
         echo "${cyan}|${reset}"
         echo "$footer"
+        echo ""
             while [ "$detect" = "" ]
             do
                  reading="$(curl -vs "$url" 2>&1 | grep "$string")"  
@@ -180,7 +181,7 @@ function monitor {
                      notified="1"
                  fi
                  if [ "$notified" = "1" ]; then
-                     echo "${green}✔ ${reset} ${cyan}[${reset}${green} Complete ${reset}${cyan}] [${reset}${purple}Change detected, notification sent.${reset}${cyan}]${reset}"
+                     echo "${green}✔ ${reset} ${cyan}[${reset}${green} Complete ${reset}${cyan}]╼[${reset}${purple}Change detected, notification sent.${reset}${cyan}]${reset}"
                      echo ""
                      exit
                  fi
