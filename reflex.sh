@@ -51,7 +51,7 @@ Copyright (C) 2017  Matthew A. Brassey
         along with this program.  If not, see <http://www.gnu.org/licenses/>.${reset}
 "
 about="
- ${cyan}reflex${reset}${purple} is a menu driven tool for monitoring changes on a web page. 
+ ${cyan}reflex v${version}${reset}${purple} is a menu driven tool for monitoring changes on a web page. 
  It uses curl and grep to confirm a phrase is present on the page you supply.
  If the phrase you specify is not present, or has changed, you will be notified.
  You will be given the option to notify 2 phone numbers via SMS. You will need a textbelt.com 
