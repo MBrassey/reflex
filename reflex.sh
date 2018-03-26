@@ -172,15 +172,15 @@ function monitor {
                  reading="$(curl -vs "$url" 2>&1 | grep "$string")"  
                  if [ "$reading" = "" ]; then
 #                     sendsms1
-                      echo "sendsms1"
+                      echo "${green}✔ ${reset} ${cyan}[${reset}${blue}$number_1${reset}${cyan}]${reset}"
                          if [ "$phonesyn" = "1" ]; then
 #                             sendsms2
-                              echo "sendsms2"
+                              echo "${green}✔ ${reset} ${cyan}[${reset}${blue}$number_2${reset}${cyan}]${reset}"
                          fi                 
                      notified="1"
                  fi
                  if [ "$notified" = "1" ]; then
-                     echo "${green} ╼[Change detected in $string, notification sent.] ${reset}"
+                     echo "${green}✔ ${reset} ${cyan}[${reset}${green} Complete ${reset}${cyan}] [${reset}${purple}Change in: ${reset}${green}$string${reset}${purple}, notification sent.${reset}${cyan}]${reset}"
                      exit
                  fi
                  sleep $delay
@@ -206,14 +206,14 @@ function message {
      echo "$header"
      echo "${cyan}|${reset}"
      echo "${cyan}|${reset}${purple}    Notifying:${reset}" 
-     echo "${cyan}|${reset}    ${reset}${cyan}╼[${reset}${blue}$number_1${reset}${cyan}]${reset}"
-     echo "${cyan}|${reset}    ${reset}${cyan}╼[${reset}${blue}$number_2${reset}${cyan}]${reset}"
+     echo "${cyan}|${reset}    ${cyan}╼[${reset}${blue}$number_1${reset}${cyan}]${reset}"
+     echo "${cyan}|${reset}    ${cyan}╼[${reset}${blue}$number_2${reset}${cyan}]${reset}"
      echo "${cyan}|${reset}"
      echo "${cyan}|${reset}${purple}    Monitoring for changes in:${reset}"
-     echo "${cyan}|${reset}    ${reset}${cyan}╼[${reset}${blue}$string${reset}${cyan}]${reset}"
+     echo "${cyan}|${reset}    ${cyan}╼[${reset}${blue}$string${reset}${cyan}]${reset}"
      echo "${cyan}|${reset}"
      echo "${cyan}|${reset}${purple}    URL:${reset}"
-     echo "${cyan}|${reset}    ╼[$url]"
+     echo "${cyan}|${reset}    ${cyan}╼[${reset}${blue}$url${reset}${cyan}]${reset}"
 }
 
 #Code
