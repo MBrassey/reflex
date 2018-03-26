@@ -4,8 +4,37 @@
 # |    \_ |______ |       |_____ |______ _/   \_
 version=1.0.0
 
+#Variables
+args=("$@")
+url=""
+string=""
+number_1=""
+number_2=""
+key=""
+any=""
+anyyn=""
+phones=""
+phonesyn=""
+notified=""
+delay="10s"
+detect=""
+
+#Colors
+reset="$(tput sgr0)"
+lineColor="$reset"
+black="$(tput bold; tput setaf 0)"
+blue="$(tput bold; tput setaf 4)"
+cyan="$(tput bold; tput setaf 6)"
+green="$(tput bold; tput setaf 2)"
+purple="$(tput bold; tput setaf 5)"
+red="$(tput bold; tput setaf 1)"
+white="$(tput bold; tput setaf 7)"
+yellow="$(tput bold; tput setaf 3)"
+header="${cyan}╭─────────────────────────╼[${reset}${blue}reflex${reset}${cyan}]${reset}"
+footer="${cyan}╰──────────────────╼[${reset}${blue}reflex${reset}${cyan}]${reset}"
+
 license="
-reflex v${version}
+${cyan}reflex v${version}${reset}${purple}
 Copyright (C) 2017  Matthew A. Brassey
 
         This program is free software: you can redistribute it and/or modify
@@ -19,56 +48,33 @@ Copyright (C) 2017  Matthew A. Brassey
         GNU General Public License for more details.
 
         You should have received a copy of the GNU General Public License
-        along with this program.  If not, see <http://www.gnu.org/licenses/>.
+        along with this program.  If not, see <http://www.gnu.org/licenses/>.${reset}
+"
+about="
+ ${cyan}Reflex${reset}${purple} is a menu driven tool for monitoring changes on a web page. 
+ It uses wget and grep to confirm a phrase is present on the page you supply.
+ If the phrase you specify is not present, or has changed, you will be notified.
+ You will be given the option to notify 2 phone numbers via SMS.  
+ Reflex will stop once the notification(s) have been sent. 
+ You will have the option to run reflex in the background and logoff.${reset} 
 "
 
 help="
-Usage: ./reflex.sh [--help|--version|--license|--about]
+${blue}Usage:${reset}${cyan} ./reflex.sh${reset}${purple} [--help|--version|--license|--about]${reset}
 
-[options]
-
+${blue}[options]${reset}
+${purple}
         --help          Display this message.
         --version       Show version.
         --license       Show lisense information.
-        --about         Learn how reflex works. 
+        --about         Learn how reflex works.
+${reset}
+${blue}[Run in backgroud]${reset}
+${cyan}        While reflex is running, do:${reset}${purple}
+        CTRL+Z
+        disown h
+        bg 1${reset} 
 "
-
-about="
-> Reflex is a menu driven tool for monitoring changes on a web page. 
-> It uses wget and grep to confirm a phrase is present on the page you supply.
-> If the phrase you specify is not present, or has changed, you will be notified.
-> You will be given the option to notify 2 phone numbers via SMS.  
-> Reflex will stop once the notification(s) have been sent. 
-> You will have the option to run reflex in the background and logoff. 
-"
-#Variables
-args=("$@")
-url=""
-string=""
-number_1=""
-number_2=""
-key=""
-any=""
-anyyn=""
-phones=""
-phonesyn=""
-notified=""
-delay="3s"
-
-#Colors
-reset="$(tput sgr0)"
-lineColor="$reset"
-black="$(tput bold; tput setaf 0)"
-blue="$(tput bold; tput setaf 4)"
-cyan="$(tput bold; tput setaf 6)"
-green="$(tput bold; tput setaf 2)"
-purple="$(tput bold; tput setaf 5)"
-red="$(tput bold; tput setaf 1)"
-white="$(tput bold; tput setaf 7)"
-yellow="$(tput bold; tput setaf 3)"
-header="${cyan}╭─────────────────────────╼[reflex]${reset}"
-footer="${cyan}╰──────────────────╼[reflex]${reset}"
-
 #Functions
 function url {
      clear
@@ -122,12 +128,12 @@ function number1 {
     echo "${cyan}|${reset}"
     printf "${cyan}|${reset}    Enter the ${cyan}phone number${reset} to notify via sms (q to quit) : "
                 read -r number_1
-                if [ "$number1" = "q" ]; then
+                if [ "$number_1" = "q" ]; then
                 echo "${cyan}|    Bye-Bye${reset}"
+                echo "${cyan}|${reset}"
+                echo "$footer"
                 exit
                 fi
-    echo "${cyan}|${reset}"
-    echo "$footer"
 }
 
 function number2 {
@@ -136,12 +142,12 @@ function number2 {
     echo "${cyan}|${reset}"
     printf "${cyan}|${reset}    Enter the ${cyan}second phone number${reset} to notify via sms (q to quit) : "
                 read -r number_2
-                if [ "$number2" = "q" ]; then
+                if [ "$number_2" = "q" ]; then
                 echo "${cyan}|    Bye-Bye${reset}"
+                echo "${cyan}|${reset}"
+                echo "$footer"
                 exit
                 fi
-    echo "${cyan}|${reset}"
-    echo "$footer"
 }
 
 function key {
@@ -152,33 +158,29 @@ function key {
                 read -r key
                 if [ "$key" = "q" ]; then
                 echo "${cyan}|    Bye-Bye${reset}"
+                echo "${cyan}|${reset}"
+                echo "$footer"
                 exit
                 fi
-    echo "${cyan}|${reset}"
-    echo "$footer"
 }
 
 function monitor {
-        echo "${cyan}|${reset}${green}    [OK] Started monitor.${reset}"
-        echo "${cyan}|${reset}${green}    Keep running in background:${reset}"
-        echo "${cyan}|${reset}${cyan}    CTRL+Z${reset}${green}${reset}"
-        echo "${cyan}|    disown -h ${reset}"
-        echo "${cyan}|    bg 1 ${reset}"
         echo "${cyan}|${reset}"
         echo "$footer"
-            while :
+            while [ "$detect" = "" ]
             do
                  reading="$(curl -vs "$url" 2>&1 | grep "$string")"  
                  if [ "$reading" = "" ]; then
-                     sendsms1
-                      echo "sent sms"
+#                     sendsms1
+                      echo "sendsms1"
                          if [ "$phonesyn" = "1" ]; then
-                             sendsms2
+#                             sendsms2
+                              echo "sendsms2"
                          fi                 
                      notified="1"
                  fi
                  if [ "$notified" = "1" ]; then
-                     echo "${red} Change detected in $string, notification sent. ${reset}"
+                     echo "${green} ╼[Change detected in $string, notification sent.] ${reset}"
                      exit
                  fi
                  sleep $delay
@@ -204,12 +206,14 @@ function message {
      echo "$header"
      echo "${cyan}|${reset}"
      echo "${cyan}|${reset}${purple}    Notifying:${reset}" 
-     echo "${cyan}| ${reset}   ╼[$number_1]"
-     echo "${cyan}| ${reset}   ╼[$number_2]"
+     echo "${cyan}|${reset}    ${reset}${cyan}╼[${reset}${blue}$number_1${reset}${cyan}]${reset}"
+     echo "${cyan}|${reset}    ${reset}${cyan}╼[${reset}${blue}$number_2${reset}${cyan}]${reset}"
+     echo "${cyan}|${reset}"
      echo "${cyan}|${reset}${purple}    Monitoring for changes in:${reset}"
-     echo "${cyan}| ${reset}   ╼[$string]"
+     echo "${cyan}|${reset}    ${reset}${cyan}╼[${reset}${blue}$string${reset}${cyan}]${reset}"
+     echo "${cyan}|${reset}"
      echo "${cyan}|${reset}${purple}    URL:${reset}"
-     echo "${cyan}| ${reset}   ╼[$url]"
+     echo "${cyan}|${reset}    ╼[$url]"
 }
 
 #Code
