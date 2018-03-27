@@ -18,6 +18,8 @@ phonesyn=""
 notified=""
 delay="10s"
 detect=""
+     number_11="2087654321"
+     number_22="2081234567"
 
 #Colors
 reset="$(tput sgr0)"
@@ -176,12 +178,12 @@ function monitor {
                      sms11="${sms1: -3}"
                      sms111="${sms11:0:-1}"
                       sent=$(date +"%T")
-                      echo "${green}✔ ${reset} ${cyan}[${reset}${blue}$number_1${reset}${cyan}]${reset}${cyan}╼[ ${reset}${purple}Texts remaining: ${reset}${green}$sms111${reset}${cyan} ]${reset}"
+                      echo "${green}✔ ${reset} ${cyan}[${reset}${blue}$number_11${reset}${cyan}]${reset}${cyan}╼[ ${reset}${purple}Texts remaining: ${reset}${green}$sms111${reset}${cyan} ]${reset}"
                          if [ "$phonesyn" = "1" ]; then
                              sms2="$(sendsms2 2>&1)"
                              sms22="${sms2: -3}"
                              sms222="${sms22:0:-1}"
-                              echo "${green}✔ ${reset} ${cyan}[${reset}${blue}$number_2${reset}${cyan}]${reset}${reset}${cyan}╼[ ${reset}${purple}Texts remaining: ${reset}${green}$sms222${reset}${cyan} ]${reset}"
+                              echo "${green}✔ ${reset} ${cyan}[${reset}${blue}$number_22${reset}${cyan}]${reset}${reset}${cyan}╼[ ${reset}${purple}Texts remaining: ${reset}${green}$sms222${reset}${cyan} ]${reset}"
                          fi                 
                      notified="1"
                  fi
@@ -213,8 +215,8 @@ function message {
      echo "$header"
      echo "${cyan}|${reset}"
      echo "${cyan}|${reset}${purple}    Notifying:${reset}" 
-     echo "${cyan}|${reset}    ${cyan}╼[${reset}${blue}$number_1${reset}${cyan}]${reset}"
-     echo "${cyan}|${reset}    ${cyan}╼[${reset}${blue}$number_2${reset}${cyan}]${reset}"
+     echo "${cyan}|${reset}    ${cyan}╼[${reset}${blue}$number_11${reset}${cyan}]${reset}"
+     echo "${cyan}|${reset}    ${cyan}╼[${reset}${blue}$number_22${reset}${cyan}]${reset}"
      echo "${cyan}|${reset}"
      echo "${cyan}|${reset}${purple}    Monitoring for changes in:${reset}"
      echo "${cyan}|${reset}    ${cyan}╼[${reset}${blue}$string${reset}${cyan}]${reset}"
