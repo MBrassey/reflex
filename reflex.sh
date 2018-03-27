@@ -172,12 +172,16 @@ function monitor {
             do
                  reading="$(curl -vs "$url" 2>&1 | grep "$string")"  
                  if [ "$reading" = "" ]; then
-#                     sendsms1
+                     sms1="$(sendsms1 2>&1)"
+                     sms11="${sms1: -3}"
+                     sms111="${sms11:0:-1}"
                       sent=$(date +"%T")
-                      echo "${green}✔ ${reset} ${cyan}[${reset}${blue}$number_1${reset}${cyan}]${reset}"
+                      echo "${green}✔ ${reset} ${cyan}[${reset}${blue}$number_1${reset}${cyan}]${reset}${cyan}╼[ ${reset}${purple}Texts remaining: ${reset}${green}$sms111${reset}${cyan} ]${reset}"
                          if [ "$phonesyn" = "1" ]; then
-#                             sendsms2
-                              echo "${green}✔ ${reset} ${cyan}[${reset}${blue}$number_2${reset}${cyan}]${reset}"
+                             sms2="$(sendsms2 2>&1)"
+                             sms22="${sms2: -3}"
+                             sms222="${sms22:0:-1}"
+                              echo "${green}✔ ${reset} ${cyan}[${reset}${blue}$number_2${reset}${cyan}]${reset}${reset}${cyan}╼[ ${reset}${purple}Texts remaining: ${reset}${green}$sms222${reset}${cyan} ]${reset}"
                          fi                 
                      notified="1"
                  fi
