@@ -54,7 +54,7 @@ about="
  ${cyan}reflex v${version}${reset}${purple} is a menu driven tool for monitoring changes on a web page. 
  It uses curl and grep to confirm a phrase is present on the page you supply. If the 
  specified string is not present, or has changed, the notification will be sent. You will 
- be given the option to notify 2 phone numbers via SMS. A textbelt.com ID is required im 
+ be given the option to notify 2 phone numbers via SMS. A textbelt.com ID is required in 
  order to send the texts. Reflex will stop once the notification(s) have been sent. 
  Run reflex in the background and logoff if needed.${reset} 
 "
