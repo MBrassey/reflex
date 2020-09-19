@@ -5,7 +5,7 @@
 > specified string is not present, or has changed, the notification will be sent. You will
 > be given the option to notify 2 phone numbers via SMS. A textbelt.com ID is required in
 > order to send the texts. reflex will stop once the notification(s) have been sent.
-> Run reflex in the background and logoff if needed, details on this bellow.
+> Run reflex in the background and logoff if needed, details on this below.
 
 ![reflex](./reflex.png)
 
