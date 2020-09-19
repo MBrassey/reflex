@@ -7,7 +7,7 @@
 > order to send the texts. reflex will stop once the notification(s) have been sent.
 > Run reflex in the background and logoff if needed, details on this below.
 
-![reflex](./reflex.png)
+[<img src="./Preview.png">](https://brassey.io/)
 
     Usage: ./reflex.sh [--help|--version|--license|--about]
 
