@@ -1,6 +1,6 @@
 ## reflex
 
-reflex is a menu driven tool for monitoring changes on a web page. The script is using curl and grep to confirm a phrase is present on the page you supply. If the specified string is not present, or has changed, the notification will be sent. You will be given the option to notify 2 phone numbers via SMS. A textbelt.com ID is required in order to send the texts. reflex will stop once the notification(s) have been sent. Run reflex in the background and logoff if needed, details on this below.
+reflex is a menu driven tool for monitoring changes on a web page. The script is using curl and grep to confirm a phrase is present on the page you supply. If the specified string is not present, or has changed, the notification will be sent. You will be given the option to notify 2 phone numbers via SMS. A textbelt.com ID is required in order to send the texts. reflex will stop once the notification(s) have been sent. Run reflex in the background and logoff if needed.
 
 ![licensebadge](https://img.shields.io/badge/license-CC0_1.0_Universal-blue)
 
